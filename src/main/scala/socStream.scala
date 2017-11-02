@@ -13,17 +13,12 @@ object socStream {
     val ssc = new StreamingContext(conf, Seconds(1))
 
     val inputDStream = ssc.socketTextStream("34.253.181.64", 7777)
-    val mappedDStream = inputDStream.map{record => record+"...."}
 
-    mappedDStream.print()
-    inputDStream.foreachRDD{
+    val words = inputDStream.flatMap(_.split(" "))
+    val pairs = words.map(word => (word, 1))
+    val wordCounts = pairs.reduceByKey(_ + _)
+    wordCounts.print()
 
-      rdd =>
-
-        val mappedRdd = rdd.map(record => record+"....")
-        val filterRdd = mappedRdd.filter(record => record.contains("ERROR"))
-
-    }
 
     ssc.start()
     ssc.awaitTermination()
