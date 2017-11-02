@@ -8,7 +8,6 @@ object socStream {
 
 
     val conf = new SparkConf()
-    conf.setMaster("local[2]")
     conf.setAppName("NetworkWordCount")
 
     val ssc = new StreamingContext(conf, Seconds(1))
