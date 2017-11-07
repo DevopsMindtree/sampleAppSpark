@@ -5,8 +5,6 @@ object socStream {
 
   def main(args:Array[String]): Unit ={
 
-
-
     val conf = new SparkConf()
     conf.setAppName("NetworkWordCount")
 
@@ -18,7 +16,6 @@ object socStream {
     val pairs = words.map(word => (word, 1))
     val wordCounts = pairs.reduceByKey(_ + _)
     wordCounts.print()
-
 
     ssc.start()
     ssc.awaitTermination()

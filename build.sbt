@@ -21,8 +21,10 @@ libraryDependencies ++= Seq(
   "org.apache.spark" %% "spark-sql" % sparkVersion,
   "org.apache.spark" %% "spark-mllib" % sparkVersion,
   "org.apache.spark" %% "spark-streaming" % sparkVersion,
-  "org.apache.spark" %% "spark-hive" % sparkVersion
+  "org.apache.spark" %% "spark-hive" % sparkVersion,
+  //"com.couchbase.client" %% "spark-connector_2.11" % sparkVersion
 
 )
 
 libraryDependencies += "org.scalatest" % "scalatest_2.11" % "2.2.2" % "test"
+//libraryDependencies += "com.couchbase.client" % "spark-connector_2.11" % "1.0.0"
